@@ -1,0 +1,4 @@
+module libpinmame {
+    umbrella header "libpinmame.h"
+    export *
+}

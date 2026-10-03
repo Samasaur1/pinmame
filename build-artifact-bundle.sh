@@ -116,6 +116,42 @@ cat > "libpinmame-ios.artifactbundle/info.json" << 'EOF'
 }
 EOF
 
+# iOS simulator
+
+cmake \
+    -B build/ios-simulator \
+    -DPLATFORM=ios-simulator \
+    -DARCH=arm64 \
+    -DBUILD_STATIC=ON \
+    -DBUILD_SHARED=OFF \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_LTO=OFF \
+    -DCMAKE_INSTALL_PREFIX=libpinmame-ios-simulator.artifactbundle
+cmake --build build/ios-simulator
+cmake --install build/ios-simulator
+
+cat > "libpinmame-ios-simulator.artifactbundle/info.json" << 'EOF'
+{
+  "schemaVersion": "1.0",
+  "artifacts": {
+    "libpinmame": {
+      "version": "1.0.0",
+      "type": "staticLibrary",
+      "variants": [
+        {
+          "path": "lib/libpinmame.a",
+          "supportedTriples": ["arm64-apple-ios-simulator"],
+          "staticLibraryMetadata": {
+            "headerPaths": ["include/pinmame"],
+            "moduleMapPath": "include/pinmame/module.modulemap"
+          }
+        }
+      ]
+    }
+  }
+}
+EOF
+
 # Create artifactbundleindex
 
 cat > "libpinmame.artifactbundleindex" << 'EOF'

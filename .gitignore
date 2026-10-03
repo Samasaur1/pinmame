@@ -4,6 +4,7 @@ build/
 /.vs/
 /obj/
 /release/
+.build/
 
 # Pinball 2000 subsystem (src/p2k): self-test binary
 /p2ktest
@@ -16,3 +17,7 @@ build/
 /src/remote_debug/suite_s11_log.txt
 /src/remote_debug/test_log.txt
 /src/remote_debug/sse_log.txt
+
+libpinmame-*.artifactbundle
+libpinmame-*.artifactbundle.zip
+libpinmame.artifactbundleindex
